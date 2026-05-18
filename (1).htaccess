@@ -1,0 +1,10 @@
+# Отключаем просмотр директорий (чтобы не видели список папок)
+Options -Indexes
+
+# Устанавливаем базовые правила безопасности
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|bak)$">
+    Require all denied
+</FilesMatch>
+
+# Закрываем доступ ко всему проекту по умолчанию
+Require all denied

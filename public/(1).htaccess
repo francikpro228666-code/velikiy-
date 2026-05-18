@@ -1,0 +1,23 @@
+# Разрешаем доступ к этой папке и всем её подпапкам (Apache 2.4+)
+Require all granted
+
+# Включаем механизм перезаписи URL
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Базовый путь — корень сайта (DocumentRoot уже указывает на public)
+    RewriteBase /
+    
+    # Если файл или папка реально существуют (CSS, JS, картинки) – отдаём напрямую
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Перенаправляем всё остальное в index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Защита от просмотра папок
+Options -Indexes
+
+# Защита от доступа к скрытым файлам
+RedirectMatch 403 /\..*$

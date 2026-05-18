@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.7",
+        "phpoffice/phpword": "^1.4"
+    }
+}
